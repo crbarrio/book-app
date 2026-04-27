@@ -1,9 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { BooksService } from '../../services/books-service';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-book-list',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './book-list.html',
   styleUrl: './book-list.css',
 })
-export default class BookList {}
+export default class BookList {
+  bookService = inject(BooksService)
+}
