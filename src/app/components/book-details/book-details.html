@@ -1,11 +1,12 @@
-<h1 class="text-2xl text-center mb-4">Detalles del libro</h1>
+
 
 @if (book()) {
-    <p class="font-semibold">Título: <span class="font-normal">{{ book()?.title }}</span></p>
-    <p class="font-semibold">Autor: <span class="font-normal">{{ book()?.author }}</span></p>
-    <p class="font-semibold">Categoría: <span class="font-normal">{{ book()?.category }}</span></p>
+    <h1 class="text-2xl text-center mb-8">{{ book()?.title }}</h1>
+    <p class="text-xl mb-2">Autor: <span class="">{{ book()?.author }}</span></p>
+    <p class="text-xl mb-2">Categoría: <span class="">{{ book()?.category }}</span></p>
 } @else {
     <p>No hemos podido encontrar el libro</p>
 }
-
-<button class="rounded px-4 py-2 bg-blue-500 text-white mt-6" (click)="returnTolist()">Volver al listado</button>
+<div class="flex flex-row-reverse">
+    <button class="rounded px-4 py-2 bg-blue-500 text-white mt-6" (click)="returnTolist()">Volver al listado</button>
+</div>

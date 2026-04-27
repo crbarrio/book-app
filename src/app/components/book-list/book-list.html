@@ -1,7 +1,10 @@
-<h1 class="text-2xl text-center mb-4">Listado de libros</h1>
+    <h1 class="text-2xl text-center mb-8">Listado de libros</h1>
 
-<ul class="mb-4">
-@for (book of bookService.getBooks(); track book.id) {
-    <li>{{ book.title }} - <a [routerLink]="['/books', book.id]" class="underline text-blue-600 hover:text-blue-800 visited:text-purple-600">Detalles</a></li>
-}
-</ul>
+    <ul class="mb-4">
+    @for (book of bookService.getBooks(); track book.id) {
+        <li class="text-xl flex mb-4">
+            <span class="w-lg">{{ book.title }} </span> 
+            <a [routerLink]="['/books', book.id]" class="text-blue-600 hover:text-blue-800">Detalles</a>
+        </li>
+    }
+    </ul>
