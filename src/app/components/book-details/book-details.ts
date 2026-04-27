@@ -10,7 +10,7 @@ import { BooksService } from '../../services/books-service';
   templateUrl: './book-details.html',
   styleUrl: './book-details.css',
 })
-export default class BookDetails {
+export class BookDetails {
 
   bookService = inject(BooksService);
   private router = inject(Router)

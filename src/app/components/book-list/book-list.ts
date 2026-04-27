@@ -8,6 +8,6 @@ import { RouterLink } from "@angular/router";
   templateUrl: './book-list.html',
   styleUrl: './book-list.css',
 })
-export default class BookList {
+export class BookList {
   bookService = inject(BooksService)
 }

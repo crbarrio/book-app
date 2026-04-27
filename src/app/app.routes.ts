@@ -1,20 +1,19 @@
 import { Routes } from '@angular/router';
+import { Layout } from './components/layout/layout';
+import { Home } from './components/home/home';
+import { BookList } from './components/book-list/book-list';
+import { BookDetails } from './components/book-details/book-details';
+import { NotFound } from './components/not-found/not-found';
 
 export const routes: Routes = [
     {
         path: '',
-        loadComponent: () => import('./components/home/home'),
+        component: Layout,
+        children: [
+            { path: '', component: Home },
+            { path: 'books', component: BookList },
+            { path: 'books/:id', component: BookDetails },
+        ]
     },
-    {
-        path: 'books',
-        loadComponent: () => import('./components/book-list/book-list'),
-    },
-    {
-        path: 'books/:id',
-        loadComponent: () => import('./components/book-details/book-details'),
-    },
-    {
-        path: '**',
-        loadComponent: () => import('./components/not-found/not-found'),
-    },
+    { path: '**', component: NotFound }
 ];
