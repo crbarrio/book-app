@@ -1,12 +1,20 @@
 
 
 @if (book()) {
-    <h1 class="text-2xl text-center mb-8">{{ book()?.title }}</h1>
-    <p class="text-xl mb-2">Autor: <span class="">{{ book()?.author }}</span></p>
-    <p class="text-xl mb-2">Categoría: <span class="">{{ book()?.category }}</span></p>
+  <h1 class="text-2xl font-semibold text-slate-800 text-center mb-6">{{ book()?.title }}</h1>
+  <dl class="space-y-4 mb-6 text-lg">
+    <div class="flex gap-4">
+      <dt class="text-slate-500 w-32">Autor</dt>
+      <dd class="text-slate-700">{{ book()?.author }}</dd>
+    </div>
+    <div class="flex gap-4">
+      <dt class="text-slate-500 w-32">Categoría</dt>
+      <dd class="text-slate-700">{{ book()?.category }}</dd>
+    </div>
+  </dl>
 } @else {
-    <p>No hemos podido encontrar el libro</p>
+  <p class="text-slate-500">No hemos podido encontrar el libro.</p>
 }
 <div class="flex flex-row-reverse">
-    <button class="rounded px-4 py-2 bg-blue-500 text-white mt-6" (click)="returnTolist()">Volver al listado</button>
+  <button class="rounded px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white transition-colors" (click)="returnTolist()">Volver al listado</button>
 </div>
