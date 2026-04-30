@@ -1,24 +1,24 @@
-import { Injectable, numberAttribute } from '@angular/core';
+import { inject, Injectable, numberAttribute } from '@angular/core';
 import { Book } from '../models/book-interface';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-const BOOKS: Book[] = [
-  { id: 1, title: 'El Quijote', author: 'Miguel de Cervantes', category: 'Novela' },
-  { id: 2, title: 'Cien Años de Soledad', author: 'Gabriel García Márquez', category: 'Realismo Mágico' },
-  { id: 3, title: 'Don Juan Tenorio', author: 'José Zorrilla', category: 'Drama' },
-];
 
 @Injectable({
   providedIn: 'root',
 })
 
 export class BooksService {
-  getBooks(): Book[] {
-    return BOOKS;
+
+  private http = inject(HttpClient);
+
+
+  getBooks(): Observable<Book[]> {
+    return this.http.get<Book[]>(`http://localhost:3000/books`)
   }
 
-  getBookById(bookId: number): Book | undefined{
-    const selectedBook = BOOKS.find(book => book.id === bookId);
-    return selectedBook;
+  getBookById(bookId: number): Observable<Book>{
+    return this.http.get<Book>(`http://localhost:3000/books/${bookId}`)
   }
 
 
