@@ -1,8 +1,17 @@
 {
   "books": [
-    { "id": "1", "title": "El Senyor dels Anells", "author": "J.R.R. Tolkien", "category": "Fantasia"},
-    { "id": "2", "title": "1984", "author": "George Orwell", "category": "Distopia"},
-    { "id": "3", "title": "Cien años de soledad", "author": "Gabriel García Márquez", "category": "Realismo Mágico"},
-    { "id": "4", "title": "Don Quijote de la Mancha", "author": "Miguel de Cervantes", "category": "Clásico"}
-  ]
+    {
+      "id": "4",
+      "title": "Don Quijote de La Mancha",
+      "author": "Miguel de Cervantes",
+      "category": "Clásico"
+    },
+    {
+      "title": "1984",
+      "author": "George Orwell",
+      "category": "Distopía",
+      "id": "yLITf_HdtNM"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

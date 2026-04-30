@@ -1,7 +1,6 @@
-import { Component, computed, Inject, inject, input } from '@angular/core';
-import { rxResource, toSignal } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, Router } from '@angular/router';
-import { map } from 'rxjs';
+import { Component, inject, input } from '@angular/core';
+import { rxResource } from '@angular/core/rxjs-interop';
+import { Router } from '@angular/router';
 import { BooksService } from '../../services/books-service';
 import { Book } from '../../models/book-interface';
 
@@ -14,13 +13,12 @@ import { Book } from '../../models/book-interface';
 export class BookDetails {
 
   bookService = inject(BooksService);
-  private router = inject(Router)
+  private router = inject(Router);
 
-  id = input<string>();
-  bookId = computed(() => Number(this.id()));
+  id = input.required<string>();
 
-  bookResource = rxResource<Book, number>({
-    params: () => this.bookId(),
+  bookResource = rxResource<Book, string>({
+    params: () => this.id(),
     stream: ({ params }) => this.bookService.getBookById(params)
   });
 

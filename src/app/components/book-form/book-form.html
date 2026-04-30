@@ -1,0 +1,75 @@
+<div class="bg-white rounded-2xl shadow-lg p-8 w-full min-w-xl mx-auto">
+  <h1 class="text-2xl font-semibold text-slate-800 text-center mb-6">{{ formTitle() }}</h1>
+
+  <form (submit)="onSubmit($event)" class="flex flex-col gap-5">
+
+    <!-- Título -->
+    <div class="flex flex-col gap-1">
+      <label for="title" class="font-medium text-slate-700">Título</label>
+      <input
+        id="title"
+        type="text"
+        [formField]="bookForm.title"
+        placeholder="Ingrese el título del libro"
+        class="p-2 border rounded focus:outline-none transition"
+        [class.border-red-500]="bookForm.title().touched() && bookForm.title().errors().length > 0"
+        [class.border-slate-300]="!(bookForm.title().touched() && bookForm.title().errors().length > 0)"
+      />
+      @if (bookForm.title().touched() && bookForm.title().errors().length > 0) {
+        <span class="text-red-500 text-sm">{{ bookForm.title().errors()[0]?.message }}</span>
+      }
+    </div>
+
+    <!-- Autor -->
+    <div class="flex flex-col gap-1">
+      <label for="author" class="font-medium text-slate-700">Autor</label>
+      <input
+        id="author"
+        type="text"
+        [formField]="bookForm.author"
+        placeholder="Ingrese el autor del libro"
+        class="p-2 border rounded focus:outline-none transition"
+        [class.border-red-500]="bookForm.author().touched() && bookForm.author().errors().length > 0"
+        [class.border-slate-300]="!(bookForm.author().touched() && bookForm.author().errors().length > 0)"
+      />
+      @if (bookForm.author().touched() && bookForm.author().errors().length > 0) {
+        <span class="text-red-500 text-sm">{{ bookForm.author().errors()[0]?.message }}</span>
+      }
+    </div>
+
+    <!-- Categoría -->
+    <div class="flex flex-col gap-1">
+      <label for="category" class="font-medium text-slate-700">Categoría</label>
+      <input
+        id="category"
+        type="text"
+        [formField]="bookForm.category"
+        placeholder="Ingrese la categoría del libro"
+        class="p-2 border rounded focus:outline-none transition"
+        [class.border-red-500]="bookForm.category().touched() && bookForm.category().errors().length > 0"
+        [class.border-slate-300]="!(bookForm.category().touched() && bookForm.category().errors().length > 0)"
+      />
+      @if (bookForm.category().touched() && bookForm.category().errors().length > 0) {
+        <span class="text-red-500 text-sm">{{ bookForm.category().errors()[0]?.message }}</span>
+      }
+    </div>
+
+    <!-- Acciones -->
+    <div class="flex gap-3 mt-2">
+      <button
+        type="button"
+        (click)="onCancel()"
+        class="flex-1 py-2 rounded border border-slate-300 text-slate-700 font-semibold hover:bg-slate-100 transition"
+      >
+        Cancelar
+      </button>
+      <button
+        type="submit"
+        class="flex-1 py-2 rounded bg-blue-600 text-white font-semibold hover:bg-blue-800 transition"
+      >
+        {{ buttonText() }}
+      </button>
+    </div>
+
+  </form>
+</div>

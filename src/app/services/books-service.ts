@@ -17,9 +17,20 @@ export class BooksService {
     return this.http.get<Book[]>(`http://localhost:3000/books`)
   }
 
-  getBookById(bookId: number): Observable<Book>{
+  getBookById(bookId: string): Observable<Book>{
     return this.http.get<Book>(`http://localhost:3000/books/${bookId}`)
   }
 
+  deleteBook(id: string): Observable<void> {
+    return this.http.delete<void>(`http://localhost:3000/books/${id}`);
+  }
+
+  addBook(book: Omit<Book, 'id'>): Observable<Book> {
+    return this.http.post<Book>(`http://localhost:3000/books`, book);
+  }
+
+  updateBook(book: Book): Observable<Book> {
+    return this.http.put<Book>(`http://localhost:3000/books/${book.id}`, book);
+  }
 
 }
