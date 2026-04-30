@@ -1,20 +1,24 @@
 
 
-@if (book()) {
-  <h1 class="text-2xl font-semibold text-slate-800 text-center mb-6">{{ book()?.title }}</h1>
+@if (bookResource.isLoading()) {
+  <p class="text-slate-500">Cargando detalles del libro...</p>
+} @else if (bookResource.error()) {
+  <p class="text-red-500">Error al cargar los detalles del libro</p>
+
+} @else {
+  <h1 class="text-2xl font-semibold text-slate-800 text-center mb-6">{{ bookResource.value()?.title }}</h1>
   <dl class="space-y-4 mb-6 text-lg">
     <div class="flex gap-4">
       <dt class="text-slate-500 w-32">Autor</dt>
-      <dd class="text-slate-700">{{ book()?.author }}</dd>
+      <dd class="text-slate-700">{{ bookResource.value()?.author }}</dd>
     </div>
     <div class="flex gap-4">
       <dt class="text-slate-500 w-32">Categoría</dt>
-      <dd class="text-slate-700">{{ book()?.category }}</dd>
+      <dd class="text-slate-700">{{ bookResource.value()?.category }}</dd>
     </div>
   </dl>
-} @else {
-  <p class="text-slate-500">No hemos podido encontrar el libro.</p>
 }
+
 <div class="flex flex-row-reverse">
   <button class="rounded px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white transition-colors" (click)="returnTolist()">Volver al listado</button>
 </div>
